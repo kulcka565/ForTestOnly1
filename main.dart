@@ -41,9 +41,10 @@ class MyHomePage extends StatelessWidget {
 
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('A random idea:'),
-          Text(pair.asLowerCase),
+          BigCard(pair: pair),
           ElevatedButton(onPressed: () {//print("Button pressed);
             appState.getNext();
           },
@@ -58,7 +59,8 @@ const BigCard({super.key, required this.pair});
   @override
   Widget build(BuildContext context) {
   final theme=Theme.of(context);
+  final style=theme.TextTheme.displayMedium!.copyWith(color: theme.colorScheme.onPrimary,);
   return Card(color: theme.colorScheme.primary,
   child: Padding(padding: const EdgeInsets.all(20),
-  child: Text(pair.asLowerCase),),);
+  child: Text(pair.asLowerCase, style: style),),);
   }
